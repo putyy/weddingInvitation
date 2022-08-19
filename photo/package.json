@@ -1,0 +1,10 @@
+{
+  "name": "wedding-invitation",
+  "version": "0.0.1",
+  "type": "module",
+  "dependencies": {},
+  "devDependencies": {
+    "imagemin": "^8.0.1",
+    "imagemin-webp": "^7.0.0"
+  }
+}
