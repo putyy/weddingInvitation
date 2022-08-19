@@ -46,4 +46,8 @@ npm run dev:mp-weixin
 # 进入photo文件夹 执行 
 node handle.js
 ```
-
+<div style="display: flex; flex-direction: row;justify-content: space-between;">
+    <img src="https://github.com/putyy/weddingInvitation/raw/main/src/static/images/photo1.png">
+    <img src="https://github.com/putyy/weddingInvitation/raw/main/src/static/images/photo2.png">
+    <img src="https://github.com/putyy/weddingInvitation/raw/main/src/static/images/wx-mini.png">
+</div>
