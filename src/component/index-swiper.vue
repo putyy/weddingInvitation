@@ -17,17 +17,17 @@ div.box(style="height: 100%")
         // 第一张动画
         div.animate-ele-warp(v-if="showOverlay0 && index === 0")
           div.animate-ele.animated.zoomIn(style="animation-duration: 3s; animation-delay: 0.2s")
-            image.animate-img(src="../static/images/invitation.png" style="width: 710rpx; height: 95%")
+            image.animate-img(:src="initInfo.invitation_img" style="width: 710rpx; height: 95%")
           div.animate-ele.animated.fadeInUp(style="animation-duration: 1.5s; animation-delay: 1.8s")
             image.animate-img(src="../static/images/loveistrue.png" style="bottom: 80rpx; left: 12rpx; width: 687rpx; height: 17rpx")
           div.animate-ele.animated.fadeInRight(style="left: 0; animation-duration: 1.5s; animation-delay: 1.8s")
             div.info
               div.content
-                h6.info-title {{ info.name }}
-                p.info-content {{ info.date }}
-                p.info-content {{ info.time }}
-                p.info-content {{ info.hotel }}
-                p.info-content {{ info.detail }}
+                h6.info-title {{ initInfo.info.name }}
+                p.info-content {{ initInfo.info.date }}
+                p.info-content {{ initInfo.info.time }}
+                p.info-content {{ initInfo.info.hotel }}
+                p.info-content {{ initInfo.info.detail }}
                 image.img_footer(src="../static/images/we.png")
         // 第二张
         div.animate-ele-warp(v-if="showOverlay1 && index === 1")
@@ -79,8 +79,17 @@ div.box(style="height: 100%")
 import {ref, onMounted, inject} from 'vue'
 
 const props = defineProps({
+  initInfo: ref({
+    info: {
+      name: "",
+      date: "",
+      time: "",
+      hotel: "",
+      detail: ""
+    },
+    invitation_img: ""
+  }),
   list: ref([]),
-  info: ref({}),
 })
 
 const autoplay = inject('autoplay')

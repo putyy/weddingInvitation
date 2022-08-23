@@ -1,14 +1,15 @@
 <template lang="pug">
-div.index
-  image.bg-image(:src="background")
+div.index(v-if="show" )
+  image.bg-image(:src="initInfo.background")
   div.bg-swiper
-    index-swiper(:list="list" :info="info")
+    index-swiper(:list="list" :init-info="initInfo")
   div.bg_music(v-if="isPlaying" @tap="audioPlay")
     image.musicImg.music_icon(src="../static/images/music_icon.png")
     image.music_play.pauseImg(src="../static/images/music_play.png")
   div.bg_music(v-else @tap="audioPlay")
     image.musicImg(src="../static/images/music_icon.png")
     image.music_play.playImg(src="../static/images/music_play.png")
+div.check_content(v-else) {{initInfo.check_content}}
 </template>
 
 <script setup>
@@ -17,33 +18,48 @@ import {onHide, onLoad, onShareAppMessage, onShareTimeline, onShow} from '@dclou
 import IndexSwiper from '../component/index-swiper.vue'
 
 const isPlaying = ref(false)
-const list = ref([])
-const info = ref({})
+const show = ref(false)
 const autoplay = ref(false)
-const initInfo = ref({})
+const list = ref([])
+const initInfo = ref({
+  info: {
+    name: "",
+    date: "",
+    time: "",
+    hotel: "",
+    detail: ""
+  },
+  check_content: "",
+  title: "",
+  share_cover: "",
+  background: "",
+  background_music: "",
+  invitation_img: "",
+  images: []
+})
 provide('autoplay', autoplay)
 
 const instance = getCurrentInstance()
 const innerAudioContext = uni.createInnerAudioContext()
-const background = ref('')
 
 onLoad(() => {
   uni.request({
-    url: import.meta.env.VITE_VUE_INIT_JSON,
+    url: import.meta.env.VITE_VUE_INIT_API,
     success: (res) => {
-      initInfo.value = res.data
-      innerAudioContext.src = res.data.background_music
+      Object.assign(initInfo.value, res.data.data)
+      innerAudioContext.src = initInfo.value.background_music
       innerAudioContext.autoplay = true
       innerAudioContext.loop = true
       innerAudioContext.onPlay(onPlay)
       innerAudioContext.onPause(onPause)
 
-      background.value = res.data.background
-      info.value = res.data.info
+      if (initInfo.value.check_content === "") {
+        show.value = true
+      }
 
       const result = []
       let animations = ['fadeInLeft', 'slideInDown', 'rotateInDownRight', 'rollIn', 'jackInTheBox', 'flip']
-      let images = res.data.images
+      let images = initInfo.value.images
       for (let i = 0; i < images.length; i++) {
         result.push({
           url: images[i],
@@ -52,8 +68,8 @@ onLoad(() => {
         })
       }
       list.value = result
-      uni.setNavigationBarTitle({title: res.data.title})
 
+      uni.setNavigationBarTitle({title: initInfo.value.title})
     }
   });
 })
@@ -101,6 +117,11 @@ const onPause = () => {
 </script>
 
 <style lang="scss">
+.check_content{
+  text-align: center;
+  padding: 20rpx;
+  font-size: 60rpx;
+}
 .bg-image {
   position: fixed;
   width: 100%;

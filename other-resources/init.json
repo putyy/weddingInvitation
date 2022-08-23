@@ -1,0 +1,23 @@
+{
+  "info": {
+    "name": "xxx and xxx 的婚礼邀请",
+    "date": "20xx年xx月1号",
+    "time": "农历x月xx",
+    "hotel": "设宴于xxx",
+    "detail": "xx市xxx县xxx镇"
+  },
+  "check_content": "",
+  "title": "xxx and xxx 的婚礼邀请",
+  "share_cover": "https://xxx.com/xxx/other-resources/background-img.png",
+  "background": "https://xxx.com/xxx/other-resources/background-img.png",
+  "background_music": "https://xxx.com/other-resources/zuimeihunli.m4a.mp3",
+  "invitation_img": "https://xxx.com/other-resources/invitation.png",
+  "images": [
+    "https://xxx.com/xxx/1.jpg",
+    "https://xxx.com/xxx/2.jpg",
+    "https://xxx.com/xxx/3.jpg",
+    "https://xxx.com/xxx/4.jpg",
+    "https://xxx.com/xxx/5.jpg",
+    "https://xxx.com/xxx/6.jpg"
+  ]
+}

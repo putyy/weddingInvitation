@@ -20,7 +20,7 @@ https://gitee.com/roberthuang123/wedding
 git clone https://github.com/putyy/weddingInvitation.git 
 
 # 将 ./src/manifest.json 中 mp-weixin 节点的 appid 改为你的小程序 id
-# 将 ./.env.example 复制一份为.env, 并更改初始化json地址(结构参照./src/init.json), 当然也可以选择修改./src/pages/index.vue 将数据写死
+# 将 ./.env.example 复制一份为.env, 并更改api地址(结构参照./other-resources/init.json，可以将json文件传到云服务填写云地址), 当然也可以选择修改./src/pages/index.vue 将数据写死
 
 # 安装依赖
 yarn install
@@ -30,6 +30,7 @@ npm run dev:mp-weixin
 
 # 将项目导入微信开发者工具, 目录: ./dist/dev/mp-weixin
 
+# 小程序过审: check_content字段填写内容
 
 ```
 
@@ -42,12 +43,12 @@ npm run dev:mp-weixin
 #### 使用
 ```shell
 # 将需要显示到相册里面的图片全部放入./photo/images文件夹
-# 如果需要将资源放到第三方存储 比如七牛云，自己改main.js对应show-images关键字的路径即可
+# 如果需要将资源放到第三方存储(将show-images文件夹上传第三方) 比如七牛云，自己改main.js对应show-images关键字的路径为真实url即可
 # 进入photo文件夹 执行 
+npm install
+
 node handle.js
 ```
-<div style="display: flex; flex-direction: row;justify-content: space-between;">
-    <img src="https://github.com/putyy/weddingInvitation/raw/main/src/static/images/photo1.png">
-    <img src="https://github.com/putyy/weddingInvitation/raw/main/src/static/images/photo2.png">
-    <img src="https://github.com/putyy/weddingInvitation/raw/main/src/static/images/wx-mini.png">
-</div>
+
+### 展示截图(左边两页是相册,右边为小程序)
+![](https://github.com/putyy/weddingInvitation/raw/main/other-resources/preview.png)
